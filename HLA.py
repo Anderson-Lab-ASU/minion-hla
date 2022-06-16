@@ -11,15 +11,32 @@ class HLA:
         self.hla_sequence = hla_sequence                                         
         self.imgt_id = imgt_id                                                  
                                                                                 
-    def printHLA(self):                                                             
-        return ("HLA-"+self.gene+"*"+self.field_1+":"+self.field_2+":"+self.field_3+":"+self.field_4)
-
-    def is01last(self):
-        if(self.field_4 == "01" or self.field_4 == ""):
-            return True
-        else: 
-            return False 
+    def HLAstr(self):
+        if self.field_3 == "":
+            return ("HLA-"+self.gene+"*"+self.field_1+":"+self.field_2)
+        elif self.field_4 == "":
+            return ("HLA-"+self.gene+"*"+self.field_1+":"+self.field_2+":"+self.field_3)
+        else:
+            return ("HLA-"+self.gene+"*"+self.field_1+":"+self.field_2+":"+self.field_3+":"+self.field_4)
     
+    def printHLA(self):
+        print HLAstr()
+
+    def __str__():
+        return HLAstr()
+
+    def compareHLAGene(self, hla):
+        if int(self.field_1) > int(hla.field_1):
+            return True
+        elif int(self.field_1) == int(hla.field_1) and int(self.field_2) > int(hla.field_2):
+            return True
+        elif int(self.field_1) == int(hla.field_1) and int(self.field_2) == int(hla.field_2) and int(self.field_3) > int(hla.field_3):
+            return True
+        elif int(self.field_1) == int(hla.field_1) and int(self.field_2) == int(hla.field_2) and int(self.field_3) == int(hla.field_3) and int(self.field_4) > int(hla.field_4):
+            return True
+        else:
+            return False
+
     def getGene(self):
         return self.gene
     
